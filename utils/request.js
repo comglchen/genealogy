@@ -2,7 +2,7 @@ import axios from "axios";
 
 //初始化axios实例
 var instance =axios.create({
-    baseURL:'http://localhost:3000',
+    baseURL:'http://120.26.48.204:3000',
     timeout:5000,
     
 })

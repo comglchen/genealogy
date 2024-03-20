@@ -35,6 +35,8 @@
     </a-form-item>
   </a-form>
 </div>
+
+
 </div>
 
 </template>
@@ -58,6 +60,7 @@ const onFinish = values => {
 const onFinishFailed = errorInfo => {
   console.log('Failed:', errorInfo);
 };
+
 </script>
 
 <style >
