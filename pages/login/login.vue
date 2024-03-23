@@ -34,8 +34,8 @@
       <a-button type="primary" html-type="submit" >登录</a-button>
     </a-form-item>
   </a-form>
-</div>
 
+</div>
 
 </div>
 
@@ -45,20 +45,47 @@
 
 //导入组合式api
 import {$login} from '/api/login'
-import {reactive} from 'vue';
+import {$mylogin} from '/api/mylogin.js'
+import {reactive,ref} from 'vue';
 import {message} from 'ant-design-vue'
+
 //表单数据
 const formState = reactive({
-  username: '',
+  username: 'he',
   password: '',
   remember: false,
 });
 const onFinish = values => {
-  let {username,password,remember} = values
-  $login({username,password})
+
+   let {username,password,remember} = values
+  $mylogin({username,password})
+  // $login({username,password})
+// uni.request({
+// 	url:'http://120.26.48.204:3000/login',
+// 	method:'post',
+// 	data:{
+// 		username:username,
+// 		password:password
+// 	},
+// 	success:res=>{
+// 		if(res.data.length>0){
+			
+// 		uni.navigateTo({
+// 			url:'/pages/index/index'
+// 		})
+// 		message.success('登录成功！')	
+// 		}else{
+// 			message.error("登录失败！")
+// 		}
+		
+// 	}
+	
+// })
+  
 };
 const onFinishFailed = errorInfo => {
-  console.log('Failed:', errorInfo);
+	
+  console.log('失败:', errorInfo);
 };
 
 </script>
