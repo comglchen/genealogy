@@ -14,12 +14,12 @@ app.$mount()
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
 
-import axios from 'axios'
+//import axios from 'axios'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/reset.css'
 export function createApp() {
   const app = createSSRApp(App)
-  app.use(axios)
+  //app.use(axios)
   app.use(Antd)
   return {
     app

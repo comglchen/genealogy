@@ -7,9 +7,10 @@ export const $login =async(params)=>{
    console.log(params.password)
    let data =await $post('login',params)
    if(data.length){
+	   console.log("daata.token",data.token)
 	   uni.navigateTo({
 	   	url:'/pages/index/index'
 	   })
 message.success("登录成功！")
-   }else message.error('登录失败！')
+   }else message.error('用户名或密码错误，登录失败！')
 }

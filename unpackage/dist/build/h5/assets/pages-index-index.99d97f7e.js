@@ -1,1 +1,0 @@
-import{o as e,i as s,w as t,j as a,d as o}from"./index-e309c0b7.js";import{_ as r}from"./_plugin-vue_export-helper.1b428a4d.js";const n=r({data:()=>({}),methods:{}},[["render",function(r,n,l,u,d,i){const p=a;return e(),s(p,null,{default:t((()=>[o("h2",null,"登录成功！")])),_:1})}]]);export{n as default};

@@ -47,11 +47,11 @@
 import {$login} from '/api/login'
 import {$mylogin} from '/api/mylogin.js'
 import {reactive,ref} from 'vue';
-import {message} from 'ant-design-vue'
+//import {message} from 'ant-design-vue'
 
 //表单数据
 const formState = reactive({
-  username: 'he',
+  username: '',
   password: '',
   remember: false,
 });
