@@ -1,51 +1,35 @@
 <template>
-	<view v-cloak>
+	<view class="container-all">
 
-		<view class="content" >
+		<view class='title'>陈桂芳族系成员检索</view>
+		<view class="search-view">
+			<a-space direction="vertical">
 
-			<h2 style='text-align:center'>陈桂芳家族检索</h2>
-			<input type="text" id="fname" name="fname" placeholder="请输入要搜索的人名" v-model="searchname"><button
-				@click="search">搜索</button>
-			<table style='border-collapse:collapse' v-if="context.length">
-
-				<tr>
-					<th>照片</th>
-					<th>姓名</th>
-					<th>简介</th>
-
-					<th>参与编辑</th>
-				</tr>
+				<a-input-search size="large" v-model:value="searchname" placeholder="输入要搜索的人名彧关键字" enter-button
+					@search="onSearch" />
 
 
-				<tr v-for="(item,index) in context  " :key='index'>
-					<td>
-						<image :src="item.imgurl" @click="clickImg(item)"></image>
-					</td>
-
-					<td> <text v-for="(i,d) in item.name.split('')" :key='d' :style="setColor(i)">{{i}} </text> </td>
-
-					<td><text v-for="(i,d) in item.detail.split('')" :key='d' :style="setColor(i)">{{i}} </text> </td>
-
-
-
-					<td><a href="javascript:;" @click="edit(item)"> 编辑意见</a> </td>
-
-				</tr>
-
-
-
-
-			</table>
-
-
+			</a-space>
 		</view>
+		<uni-table  stripe  border="false" emptyText="暂无更多数据" >
+			<uni-tr>
+				<uni-th align="center">照片</uni-th>
+				<uni-th align="center">姓名</uni-th>
+				<uni-th align="center">简介</uni-th>
+				<uni-th align="center">联系电话</uni-th>
+				<uni-th align="center">编辑</uni-th>
+			</uni-tr>
+			<uni-tr v-for="(item,index) in context  " :key='index'>
+				<uni-td  align="center"><image :src="item.imgurl" @click="clickImg(item)"></image></uni-td>
+				<uni-td  align="center"> <text v-for="(i,d) in item.name.split('')" :key='d' :style="setColor(i)">{{i}} </text></uni-td>
+				<uni-td><text v-for="(i,d) in item.detail.split('')" :key='d' :style="setColor(i)">{{i}} </text></uni-td>
+				<uni-td><text>{{item.phone}}</text></uni-td>
+				<uni-td><a href="javascript:;" @click="edit(item)"> 编辑意见</a> </uni-td>
+			</uni-tr>
+		</uni-table>
 
 	</view>
-
-
 </template>
-
-
 <script>
 	import {
 		message
@@ -75,7 +59,7 @@
 					}),
 					console.log(name)
 			},
-			search() {
+			onSearch() {
 				if (this.searchname) {
 					uni.request({
 						url: "http://120.26.48.204:3000/getData?name=" + this.searchname,
@@ -111,14 +95,34 @@
 	}
 </script>
 
+
 <style>
-	[v-cloak] {
-		display: none;
+	.title {
+
+		font-size: 38px;
+		color: beige;
+		margin-top: 80px;
 	}
 
+	.search-view {
+		color: aliceblue;
+		margin-top: 80px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		width: 850px;
+		height: 180px;
+	}
+
+	.utable {
+	    border-collapse: collapse;
+		 border-color:green
+	  }
+
 	image {
-		width: 33px;
-		height: 53px;
+		width: 66px;
+		height: 106px;
 	}
 
 	table,
@@ -126,5 +130,16 @@
 	td {
 		margin: 50px;
 		border: solid 1px;
+	}
+
+	.container-all {
+		height: auto;
+		width: auto;
+		background: linear-gradient(to bottom, #11264f, #90d7ec);
+
+		display: flex;
+		flex-direction: column;
+		justify-items: center;
+		align-items: center;
 	}
 </style>

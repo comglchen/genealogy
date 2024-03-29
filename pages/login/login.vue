@@ -44,7 +44,7 @@
 <script setup>
 
 //导入组合式api
-import {$login} from '/api/login'
+
 import {$mylogin} from '/api/mylogin.js'
 import {reactive,ref} from 'vue';
 //import {message} from 'ant-design-vue'
@@ -94,7 +94,8 @@ const onFinishFailed = errorInfo => {
 .login{
     width:100vw;
     height: 100vh;
-    background: linear-gradient(to bottom, rgb(5,57,79),rgb(200,235,250));
+    /* background: linear-gradient(to bottom, rgb(5,57,79),rgb(200,235,250)); */
+    background: linear-gradient(to bottom, #11264f,#90d7ec);
     display: flex;
     justify-content: center;
     align-items: center;
