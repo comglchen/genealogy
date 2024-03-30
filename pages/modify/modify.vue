@@ -1,23 +1,34 @@
 <template>
-	<view class="v-form">
+	<view class="container">
 		<view class="">
-			<h1>编辑{{modifyName}}相关内容</h1>
+			<h1 style="color: aliceblue;margin-bottom: 80px;">编辑{{modifyName}}相关内容</h1>
 		</view>
 		<view>
-			<uni-table stripe emptyText="暂无更多数据">
+			<uni-table class="utable" border="false" bemptyText="暂无更多数据">
 				<uni-tr>
 					<uni-th align="center">图片</uni-th>
 					<uni-th align="center">内容</uni-th>
-					<uni-th align="center">联系电话</uni-th>
+					
+						<uni-th align="center" style="width:80px">联系电话</uni-th>
+					
+			
 					
 				</uni-tr>
 				<uni-tr>
-					<uni-td><view class="photoview">
+					<uni-td align="center"><view class="photoview">
 								<image :src="imgsrc" @click="selectImage"></image>
 								<a href="javascript:;" @click="uploadimg">上传照片</a>
 							</view></uni-td>
-					<uni-td><textarea placeholder="请输入要编辑的内容" v-model="modifyDetail" /></uni-td>
-					<uni-td><textarea placeholder="请输入要编辑的内容" v-model="modifyPhone" /></uni-td>
+					
+						<uni-td ><textarea class="detailView" placeholder="请输入要编辑的内容" v-model="modifyDetail" /></uni-td>
+				
+					
+					
+						<uni-td >
+						<textarea class="phoneView" placeholder="请输入要编辑的内容" v-model="modifyPhone" />
+						</uni-td>
+				
+					
 				</uni-tr>
 			</uni-table>
 
@@ -46,7 +57,7 @@
 			}
 		},
 		onLoad(op) {
-			this.imgsrc = op.url
+			this.imgsrc = op.url+op.imgsuffix
 			this.ename = op.ename
 			this.modifyName=op.name
 			this.modifyDetail = op.detail
@@ -169,15 +180,8 @@
 </script>
 
 <style>
-	image {
-		height: 100px;
-		width: 100px;
-	}
 
-	textarea {
-		height: 50px;
-		width: 800px;
-	}
+	
 
 	.v-form {
 		display: flex;
@@ -186,21 +190,37 @@
 		align-content: center;
 		align-items: center;
 	}
-
+	.detailView{
+	
+		width:50vw
+	}
+.phoneView{
+	width:10vw
+}
 	image {
 		width: 66px;
 		height: 106px;
 	}
 
-	table,
-	th,
-	td {
-		margin: 50px;
-		border: solid 1px;
-	}
+.utable{
+	width:90vw
+}
 
 	.photoview {
 		display: flex;
 		flex-direction: column;
+	
+		align-items: center;
+	}
+	.container{
+		padding-top: 90px;
+		width:100vw;
+		height: 100vh;
+		/* background: linear-gradient(to bottom, rgb(5,57,79),rgb(200,235,250)); */
+		background: linear-gradient(to bottom, #11264f,#90d7ec);
+		display: flex;
+		flex-direction: column;
+
+		align-items: center;
 	}
 </style>
