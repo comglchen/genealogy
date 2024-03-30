@@ -55,7 +55,7 @@
 
 				uni.navigateTo({
 						url: "/pages/modify/modify?name=" + items.name + "&detail=" + items.detail + "&url=" + items
-							.imgurl
+							.imgurl+"&phone=" + items.phone
 					}),
 					console.log(name)
 			},

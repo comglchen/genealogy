@@ -4,33 +4,30 @@
 			<h1>编辑{{modifyName}}相关内容</h1>
 		</view>
 		<view>
-			<form action="">
-
-				this is modify page.......
-				<table border='1'>
-					<tr>
-						<th>图片</th>
-						<th>内容</th>
-					</tr>
-					<tr>
-						<td>
-
-							<view class="photoview">
+			<uni-table stripe emptyText="暂无更多数据">
+				<uni-tr>
+					<uni-th align="center">图片</uni-th>
+					<uni-th align="center">内容</uni-th>
+					<uni-th align="center">联系电话</uni-th>
+					
+				</uni-tr>
+				<uni-tr>
+					<uni-td><view class="photoview">
 								<image :src="imgsrc" @click="selectImage"></image>
 								<a href="javascript:;" @click="uploadimg">上传照片</a>
-							</view>
+							</view></uni-td>
+					<uni-td><textarea placeholder="请输入要编辑的内容" v-model="modifyDetail" /></uni-td>
+					<uni-td><textarea placeholder="请输入要编辑的内容" v-model="modifyPhone" /></uni-td>
+				</uni-tr>
+			</uni-table>
 
-						</td>
-						<td><textarea placeholder="请输入要编辑的内容" v-model="modifyDetail" /></td>
-					</tr>
-
-				</table>
+			
 
 
 				<button @click="modify">修改</button>
 			
-			</form>
-			<image src="http://localhost:3000/img/image-1709282987443-320586179.png"></image>
+			
+			
 		</view>
 	</view>
 </template>
@@ -44,8 +41,8 @@
 				modifyName: '',
 				imgsrc: '/static/addimages.png',
 				modifyDetail: '',
-				ename: ''
-
+				ename: '',
+				modifyPhone:''
 			}
 		},
 		onLoad(op) {
@@ -53,6 +50,7 @@
 			this.ename = op.ename
 			this.modifyName=op.name
 			this.modifyDetail = op.detail
+			this.modifyPhone =op.phone
 			console.log("in onload.................", op.ename)
 		},
 		methods: {
@@ -140,7 +138,8 @@
 					method: "post",
 					data:{
 							modifyDetail:this.modifyDetail,
-							modifyName:this.modifyName
+							modifyName:this.modifyName,
+							modifyPhone:this.modifyPhone
 						},
 					success: (res) => {
 						console.log(res)
